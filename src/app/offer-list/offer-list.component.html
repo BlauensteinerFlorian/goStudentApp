@@ -1,5 +1,5 @@
 <div class="ui middle aligned selection divided list">
-    <a *ngFor="let offer of offers" class="item gs-offer-list-item" [offer]="offer"></a>
+    <a *ngFor="let offer of offers" class="item gs-offer-list-item" [offer]="offer" (click)="showDetails(offer)"></a>
 </div>
 
 <!--<div class="ui middle aligned selection divided list">

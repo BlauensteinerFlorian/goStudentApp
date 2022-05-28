@@ -1,0 +1,21 @@
+<div class="ui grid" *ngIf="offer">
+    <div class="twelve wide column">
+        <h1 class="ui header">{{ offer.title }}</h1>
+        <h3 class="ui header">{{ offer.description }} - {{ offer.state }}</h3>
+        <div class="ui divider"></div>
+        <div class="ui grid">
+            <div class="four wide column">
+                <h4 class="ui header">Termin</h4>
+                <p>Am {{ offer.date }} von {{offer.start_time}} - {{ offer.end_time }} </p>
+            </div>
+            <div class="four wide column">
+                <h4 class="ui header">Tutor Informationen</h4>
+                coming soon...
+            </div>
+            <div class="four wide column">
+                <h4 class="ui header">Fachgebiet</h4>
+                comming soon....
+            </div>
+        </div>
+    </div>
+</div>
