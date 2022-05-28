@@ -7,6 +7,8 @@ import { OfferListItemComponent } from './offer-list-item/offer-list-item.compon
 import { OfferService } from './shared/offer.service';
 import { OfferDetailsComponent } from './offer-details/offer-details.component';
 import { HomeComponent } from './home/home.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,7 @@ import { HomeComponent } from './home/home.component';
     HomeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, AppRoutingModule, HttpClientModule
   ],
   providers: [OfferService],
   bootstrap: [AppComponent]

@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Offer } from '../shared/offer';
+import { OfferService } from '../shared/offer.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'gs-offer-details',
@@ -8,16 +10,24 @@ import { Offer } from '../shared/offer';
   ]
 })
 export class OfferDetailsComponent implements OnInit {
-  @Input() offer: Offer | undefined;
-  @Output() showListEvent = new EventEmitter<any>();
+  offer: Offer | undefined;
 
-  constructor() { }
+  constructor(private os: OfferService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+    const params = this.route.snapshot.params;
+    this.os.getSingle(params['id']).subscribe(offer => this.offer = offer);
+    //this.offer = this.os.getSingle(params['id']);
   }
 
-  showOfferList() {
-    this.showListEvent.emit();
+  removeOffer() {
+    if (this.offer?.id && confirm('Nachhilfeangebot wirklich löschen?')) {
+      this.os.remove(this.offer.id.toString())
+        .subscribe(res => this.router.navigate(['../'], {
+          relativeTo:
+            this.route
+        }));
+    }
   }
 
 }
