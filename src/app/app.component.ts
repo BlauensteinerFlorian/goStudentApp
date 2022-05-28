@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'gs-root',
-  templateUrl: './app.component.html',
+  template: '<gs-offer-list></gs-offer-list>',
   styles: []
 })
 export class AppComponent {
