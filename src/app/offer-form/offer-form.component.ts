@@ -74,11 +74,8 @@ export class OfferFormComponent implements OnInit {
   }
   submitForm() {
     const offer: Offer = OfferFactory.fromObject(this.offerForm.value);
-    let date = new Date(offer.date).toLocaleDateString("de-DE");
-    let dateArray = date.split(".").reverse();
-    date = dateArray[0] + "-" + (Number(dateArray[1]) < 10 ? ("0" + dateArray[1]) : dateArray[1]) + "-" +
-      (Number(dateArray[2]) < 10 ? ("0" + dateArray[2]) : dateArray[2])
-    offer.date = date;
+
+    offer.date = this.formatDate(offer.date);
     if (this.isUpdatingOffer) {
 
       this.os.update(offer).subscribe(res => {
@@ -90,9 +87,6 @@ export class OfferFormComponent implements OnInit {
       offer.user = this.user;
       offer.user_id = this.user.id;
 
-      console.log(offer);
-      console.log(date)
-      console.log(offer.date);
       this.os.create(offer).subscribe(res => {
         this.offer = OfferFactory.empty();
         this.offerForm.reset(OfferFactory.empty());
@@ -116,4 +110,12 @@ export class OfferFormComponent implements OnInit {
       }
     }
   }
+  formatDate(input: string): string {
+    let date = new Date(input).toLocaleDateString("de-DE");
+    let dateArray = date.split(".").reverse();
+    date = dateArray[0] + "-" + (Number(dateArray[1]) < 10 ? ("0" + dateArray[1]) : dateArray[1]) + "-" +
+      (Number(dateArray[2]) < 10 ? ("0" + dateArray[2]) : dateArray[2])
+    return date;
+  }
+
 }
