@@ -20,5 +20,11 @@
     </div>
 </div>
 <br>
-<button [routerLink]="'/offers'" class="ui red button">Zurück zu allen Nachhilfeangeboten</button>
-<button class="ui tiny red labeled icon button" (click)="removeOffer()"><i class="remove icon">Löschen</i></button>
+<button *ngIf="authService.isLoggedIn()" class="ui tiny red labeled icon
+button" (click)="removeOffer()">
+    <i class="remove icon"></i> Nachhilfeangebot löschen
+</button>
+<a *ngIf="authService.isLoggedIn()" class="ui tiny yellow labeled icon
+button" [routerLink]="['../../admin', offer?.id]">
+    <i class="write icon"></i> Nachhilfeangebot bearbeiten
+</a>

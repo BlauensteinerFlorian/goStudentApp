@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from './shared/authentication.service';
 import { Offer } from './shared/offer';
 
 @Component({
@@ -8,5 +9,19 @@ import { Offer } from './shared/offer';
 })
 export class AppComponent {
   title = 'gostudentapp';
+
+  constructor(private authService: AuthenticationService) { }
+
+  isLoggedIn() {
+    return this.authService.isLoggedIn();
+  }
+
+  getLoginLabel() {
+    if (this.isLoggedIn()) {
+      return "Logout";
+    } else {
+      return "Login";
+    }
+  }
 
 }
