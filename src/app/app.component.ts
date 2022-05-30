@@ -19,6 +19,14 @@ export class AppComponent {
     return this.authService.isTutor();
   }
 
+  getNavTabs() {
+    if (this.isTutor() && this.isLoggedIn())
+      return "five";
+    else if (this.isLoggedIn())
+      return "four";
+    return "three";
+  }
+
   getLoginLabel() {
     if (this.isLoggedIn()) {
       return "Logout";

@@ -1,0 +1,29 @@
+<div class="ui grid" *ngIf="user">
+    <div class="sixteen wide column">
+        <div class="twelve wide column">
+            <h1 class="ui center aligned header">{{ user.firstname }} {{user.lastname}} <i class="book icon"></i></h1>
+            <h3 class="ui center aligned header">{{ user.biography }}</h3>
+            <div class="ui divider"></div>
+        </div>
+    </div>
+    <div class="sixteen wide column">
+        <div class="ui grid">
+            <div class="two wide column"></div>
+            <div class="four wide column">
+                <h4 class="ui header">Termin</h4>
+            </div>
+            <div class="four wide column">
+                <h4 class="ui header">Kontaktdaten</h4>
+                <p><a href="mailto:{{user.email}}">{{user.email}}</a><br><a href="tel:{{user.phone}}"
+                        *ngIf="user.phone">{{user.phone}}</a></p>
+            </div>
+            <div class="four wide column">
+                <h4 class="ui header">Fachgebiet</h4>
+
+            </div>
+            <div class="two wide column"></div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="ui divider"></div>

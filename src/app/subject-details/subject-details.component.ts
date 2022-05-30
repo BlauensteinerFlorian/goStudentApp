@@ -18,7 +18,7 @@ export class SubjectDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const params = this.route.snapshot.params;
-    this.subjectService.getSingle(params['id']).subscribe(subject => {
+    this.subjectService.getSingle(params['subjectid']).subscribe(subject => {
       this.subject = subject;
       console.log(subject);
     });

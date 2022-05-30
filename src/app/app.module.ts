@@ -20,6 +20,7 @@ import { OfferFormComponent } from './offer-form/offer-form.component';
 import { SubjectListComponent } from './subject-list/subject-list.component';
 import { SubjectListItemComponent } from './subject-list-item/subject-list-item.component';
 import { SubjectDetailsComponent } from './subject-details/subject-details.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SubjectDetailsComponent } from './subject-details/subject-details.compo
     OfferFormComponent,
     SubjectListComponent,
     SubjectListItemComponent,
-    SubjectDetailsComponent
+    SubjectDetailsComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, ToastrModule.forRoot(), ReactiveFormsModule

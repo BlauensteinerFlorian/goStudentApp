@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { OfferFormComponent } from './offer-form/offer-form.component';
 import { SubjectListComponent } from './subject-list/subject-list.component';
 import { SubjectDetailsComponent } from './subject-details/subject-details.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -18,7 +19,8 @@ const routes: Routes = [
     { path: 'admin', component: OfferFormComponent },
     { path: 'admin/:id', component: OfferFormComponent },
     { path: 'subjects', component: SubjectListComponent },
-    { path: 'subjects/:id', component: SubjectDetailsComponent },
+    { path: 'profile', component: ProfileComponent },
+    { path: 'subjects/:subjectid', component: SubjectDetailsComponent },
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
