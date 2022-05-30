@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+.item_div {
+    margin-top: 2em;
+}
+
+.ui.cards {
+    justify-content: space-around;
+}
+
+.homeContainer {
+    margin-top: 5em;
+}
+
+.buttonContainer .button {
+    margin-top: 2em !important;
+}
+
+.root {
+    width: 95% !important;
+    margin: auto !important;
+}
+
+
+@media screen and (min-width: 730px) {
+    .root {
+        width: 80% !important;
+        margin: auto !important;
+    }
+}

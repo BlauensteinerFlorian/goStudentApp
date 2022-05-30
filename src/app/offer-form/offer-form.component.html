@@ -1,40 +1,50 @@
-<h1>Nachhilfeangebot-Formular</h1>
-<form class="ui large form" [formGroup]="offerForm" (ngSubmit)="submitForm()">
-    <input type="hidden" formControlName="id">
-    <div class="field">
-        <label>Titel</label>
-        <input formControlName="title">
-        <div *ngIf="errors['title']" class="ui negative message"> {{
-            errors['title'] }} </div>
+<div class="ui grid">
+    <div class="two wide column"></div>
+    <div class="twelve wide column">
+        <h1>Nachhilfeangebot-Formular</h1>
+        <form class="ui large form" [formGroup]="offerForm" (ngSubmit)="submitForm()">
+            <input type="hidden" formControlName="id">
+            <div class="field">
+                <label>Titel</label>
+                <input formControlName="title">
+                <div *ngIf="errors['title']" class="ui negative message"> {{
+                    errors['title'] }} </div>
+            </div>
+            <div class="field">
+                <label>Status</label>
+                <select formControlName="state" class="input">
+                    <option disabled selected value="-1">Bitte wählen ...</option>
+                    <option value="offen">Offen</option>
+                    <option value="Nicht erschienen">Nicht erschienen</option>
+                    <option value="Abgeschlossen">Abgeschlossen</option>
+                </select>
+            </div>
+            <div class="field">
+                <label>Startzeit</label>
+                <input formControlName="start_time">
+            </div>
+            <div class="field">
+                <label>Endzeit</label>
+                <input formControlName="end_time">
+            </div>
+            <div class="field">
+                <label>Tag</label>
+                <input type="date" formControlName="date">
+                <div *ngIf="errors['date']" class="ui negative message">{{
+                    errors['date'] }}</div>
+            </div>
+            <div class="field">
+                <label>Fächer</label>
+                <select formControlName="subject_id" class="input">
+                    <option disabled selected value="-1">Bitte wählen ...</option>
+                    <option *ngFor="let subject of subjects" [value]="subject.id">{{subject.title}}</option>
+                </select>
+            </div>
+            <div class="field">
+                <label>Beschreibung</label>
+                <textarea formControlName="description" rows="3"></textarea>
+            </div>
+            <button type="submit" class="ui button" [disabled]="offerForm.invalid">Speichern</button>
+        </form>
     </div>
-    <div class="field">
-        <label>Status</label>
-        <input formControlName="state">
-    </div>
-    <div class="field">
-        <label>Startzeit</label>
-        <input formControlName="start_time">
-    </div>
-    <div class="field">
-        <label>Endzeit</label>
-        <input formControlName="end_time">
-    </div>
-    <div class="field">
-        <label>Tag</label>
-        <input type="date" formControlName="date">
-        <div *ngIf="errors['date']" class="ui negative message">{{
-            errors['date'] }}</div>
-    </div>
-    <div class="field">
-        <label>Fächer</label>
-        <select formControlName="subject_id" class="input">
-            <option disabled selected value="-1">Bitte wählen ...</option>
-            <option *ngFor="let subject of subjects" [value]="subject.id">{{subject.title}}</option>
-        </select>
-    </div>
-    <div class="field">
-        <label>Beschreibung</label>
-        <textarea formControlName="description" rows="3"></textarea>
-    </div>
-    <button type="submit" class="ui button" [disabled]="offerForm.invalid">Speichern</button>
-</form>
+</div>

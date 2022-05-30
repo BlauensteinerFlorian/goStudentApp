@@ -1,9 +1,27 @@
-<div class="content">
-    <div class="header">{{ offer?.title }}</div>
-    <div class="description">{{ offer?.description }}</div>
-    <div class="timeslot">
-        Am {{offer?.date}} von {{offer?.start_time}} - {{offer?.end_time}}
+<div class="ui card">
+    <div class="content">
+        <div class="header">{{ offer?.title }} <i class="book icon"></i></div>
     </div>
-    <div class="status">Status: {{ offer?.state}}</div>
-    <!--<button (click)="myClickHandler()">MyButton</button>-->
+    <div class="content">
+        <h4 class="ui sub header">Status: {{offer?.state}}</h4>
+        <div class="ui small feed">
+            <div class="event">
+                <div class="content">
+                    <div class="summary">
+                        Am: {{offer?.date}}
+                    </div>
+                </div>
+            </div>
+            <div class="event">
+                <div class="content">
+                    <div class="summary">
+                        Von {{offer?.start_time}} bis {{offer?.end_time}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="description">
+            {{ offer?.description }}
+        </div>
+    </div>
 </div>

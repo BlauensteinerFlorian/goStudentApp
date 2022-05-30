@@ -1,0 +1,18 @@
+<div class="ui grid" *ngIf="subject">
+    <div class="sixteen wide column">
+        <div class="twelve wide column">
+            <h1 class="ui center aligned header">{{ subject.title }} <i class="book icon"></i></h1>
+            <div class="ui divider"></div>
+        </div>
+    </div>
+    <div class="sixteen wide column">
+        <div class="ui grid">
+            <div class="two wide column"></div>
+            <div class="four wide column">
+                <h4 class="ui header">Beschreibung</h4>
+                <p>{{ subject.description }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<br>

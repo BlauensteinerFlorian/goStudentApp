@@ -18,8 +18,11 @@ export class OfferDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const params = this.route.snapshot.params;
-    this.os.getSingle(params['id']).subscribe(offer => this.offer = offer);
-    //this.offer = this.os.getSingle(params['id']);
+    console.log(params['id'])
+    this.os.getSingle(params['id']).subscribe(offer => {
+      this.offer = offer;
+      console.log(offer);
+    });
   }
 
   removeOffer() {
@@ -30,6 +33,10 @@ export class OfferDetailsComponent implements OnInit {
             this.route
         }));
     }
+  }
+
+  sendRequest() {
+
   }
 
 }

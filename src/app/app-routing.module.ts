@@ -6,6 +6,9 @@ import { OfferListComponent } from './offer-list/offer-list.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { OfferFormComponent } from './offer-form/offer-form.component';
+import { SubjectListComponent } from './subject-list/subject-list.component';
+import { SubjectDetailsComponent } from './subject-details/subject-details.component';
+
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
@@ -13,7 +16,9 @@ const routes: Routes = [
     { path: 'offers/:id', component: OfferDetailsComponent },
     { path: 'login', component: LoginComponent },
     { path: 'admin', component: OfferFormComponent },
-    { path: 'admin/:id', component: OfferFormComponent }
+    { path: 'admin/:id', component: OfferFormComponent },
+    { path: 'subjects', component: SubjectListComponent },
+    { path: 'subjects/:id', component: SubjectDetailsComponent },
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

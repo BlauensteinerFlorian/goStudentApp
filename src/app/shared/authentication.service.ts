@@ -6,6 +6,7 @@ interface Token {
   exp: number;
   user: {
     id: string;
+    role: string,
   };
 }
 
@@ -38,11 +39,13 @@ export class AuthenticationService {
     console.log(decodedToken.user.id);
     sessionStorage.setItem("token", token);
     sessionStorage.setItem("userId", decodedToken.user.id);
+    sessionStorage.setItem("user_role", decodedToken.user.role)
   }
   logout() {
     this.http.post(`${this.api}/logout`, {});
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("userId");
+    sessionStorage.removeItem("user_role");
     console.log("logged out");
   }
   public isLoggedIn() {
@@ -62,6 +65,12 @@ export class AuthenticationService {
       return false;
     }
   }
+  public isTutor() {
+    if (Number(sessionStorage.getItem("user_role")) == 2)
+      return true;
+    return false;
+  }
+
   isLoggedOut() {
     return !this.isLoggedIn();
   }

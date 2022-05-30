@@ -1,6 +1,8 @@
-<div class="ui middle aligned selection divided list">
-    <a *ngFor="let offer of offers" class="item gs-offer-list-item" [offer]="offer"
-        [routerLink]="offer.id.toString()"></a>
+<div class="ui cards">
+    <div class="item_div" *ngFor="let offer of offers">
+        <a class="item gs-offer-list-item" [offer]="offer" [routerLink]="offer.id.toString()"></a>
+    </div>
+
     <div *ngIf="!offers" class="ui active dimmer">
         <div class="ui large text loader">Nachhilfeangebote werden geladen...</div>
     </div>

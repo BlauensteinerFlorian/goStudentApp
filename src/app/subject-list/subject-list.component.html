@@ -1,0 +1,10 @@
+<div class="ui cards">
+    <div class="item_div" *ngFor="let subject of subjects">
+        <a class="item gs-subject-list-item" [subject]="subject" [routerLink]="subject.id.toString()"></a>
+    </div>
+
+    <div *ngIf="!subjects" class="ui active dimmer">
+        <div class="ui large text loader">Nachhilfeangebote werden geladen...</div>
+    </div>
+    <p *ngIf="subjects && !subjects.length">Es existieren im Moment noch keine Nachhilfeangebote!</p>
+</div>

@@ -69,6 +69,10 @@ export class OfferFormComponent implements OnInit {
       date: [this.offer.date, Validators.required],
       subject_id: [this.offer.subject_id, Validators.required]
     });
+    console.log(this.isUpdatingOffer);
+    if (!this.isUpdatingOffer) {
+      this.offerForm.controls['state'].disable();
+    }
     this.offerForm.statusChanges.subscribe(() =>
       this.updateErrorMessages());
   }

@@ -15,6 +15,9 @@ export class AppComponent {
   isLoggedIn() {
     return this.authService.isLoggedIn();
   }
+  isTutor() {
+    return this.authService.isTutor();
+  }
 
   getLoginLabel() {
     if (this.isLoggedIn()) {

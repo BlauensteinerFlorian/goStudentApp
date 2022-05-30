@@ -17,6 +17,9 @@ import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ReactiveFormsModule } from '@angular/forms';
 import { OfferFormComponent } from './offer-form/offer-form.component';
+import { SubjectListComponent } from './subject-list/subject-list.component';
+import { SubjectListItemComponent } from './subject-list-item/subject-list-item.component';
+import { SubjectDetailsComponent } from './subject-details/subject-details.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { OfferFormComponent } from './offer-form/offer-form.component';
     OfferDetailsComponent,
     HomeComponent,
     LoginComponent,
-    OfferFormComponent
+    OfferFormComponent,
+    SubjectListComponent,
+    SubjectListItemComponent,
+    SubjectDetailsComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, ToastrModule.forRoot(), ReactiveFormsModule

@@ -6,7 +6,7 @@ export class OfferFactory {
         return new Offer(0, '', '', '', "", {
             id: 0, firstname: '', lastname: '', biography: '', phone: '',
             email: '', password: '', role: 0
-        }, { id: 0, title: '', description: '' }, '', '', {
+        }, { id: 0, title: '', description: '' }, 'offen', '', {
             id: 0, firstname: '', lastname: '',
             biography: '', phone: '', email: '', password: '', role: 0
         }, 0, 0);
