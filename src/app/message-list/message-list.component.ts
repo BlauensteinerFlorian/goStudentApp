@@ -26,8 +26,6 @@ export class MessageListComponent implements OnInit {
     }
     else{
       this.messageService.getByUserId(this.authService.getCurrentUserId().toString()).subscribe(res => {
-        console.log(res);
-        console.log("testtt");
         this.messages = res;
       });
     }

@@ -25,13 +25,11 @@ export class RequestListComponent implements OnInit {
       const currentuserId = this.authService.getCurrentUserId();
       this.requestService.getByUserId(currentuserId.toString()).subscribe(res => {
         this.requests = res;
-        console.log(res);
       });
     }
     else if(this.offer && this.offer.id){
       this.requestService.getPendingRequestsByOfferId(this.offer.id.toString()).subscribe(res => {
         this.requests = res;
-        console.log(res);
       });
     }
   }

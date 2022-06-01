@@ -55,7 +55,7 @@
     </div>
 </div>
 <br>
-<div class="ui divider"></div>
+<div *ngIf="authService.isLoggedIn()&&authService.isTutor()" class="ui divider"></div>
 <div class="ui grid">
     <div class="sixteen wide column center aligned">
         <div class=" twelve wide column center aligned buttonContainer">

@@ -11,6 +11,7 @@ import { UserService } from "../shared/user.service";
 import { User } from "../shared/user";
 import { MessageFormErrorMessages } from "./message-form-error-messages";
 import { Offer } from "../shared/offer";
+import { ToastrService } from "ngx-toastr";
 @Component({
   selector: 'gs-message-form',
   templateUrl: './message-form.component.html',
@@ -30,7 +31,8 @@ export class MessageFormComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthenticationService,
-    private userService: UserService
+    private userService: UserService,
+    private toastr: ToastrService
   ) {
     this.messageForm = this.fb.group({});
   }
@@ -57,18 +59,15 @@ export class MessageFormComponent implements OnInit {
         msg.offer = this.offer;
         msg.offer_id = this.offer.id;
       }
-      console.log(this.messageForm.value);
-      console.log(msg);
       this.messageService.create(msg).subscribe(res => {
-        console.log(res);
         this.message = MessageFactory.empty();
         this.messageForm.reset(MessageFactory.empty());
         this.router.navigate(["../../offers"], { relativeTo: this.route });
+        this.toastr.success("Nachricht versendet.", "Erfolg");
       });
     });
   }
   updateErrorMessages() {
-    console.log("Is invalid? " + this.messageForm.invalid);
     this.errors = {};
     for (const message of MessageFormErrorMessages) {
       const control = this.messageForm.get(message.forControl);

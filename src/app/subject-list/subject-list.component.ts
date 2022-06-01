@@ -18,7 +18,6 @@ export class SubjectListComponent implements OnInit {
   ngOnInit(): void {
     this.subjectService.getAll().subscribe(res => {
       this.subjects = res
-      console.log(res);
     });
   }
 

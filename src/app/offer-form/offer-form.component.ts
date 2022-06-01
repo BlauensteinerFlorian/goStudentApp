@@ -14,6 +14,7 @@ import { UserFactory } from "../shared/user-factory";
 import { SubjectService } from "../shared/subject.service";
 import { Subject } from "../shared/subject";
 import { delay } from "rxjs";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'gs-offer-form',
@@ -39,6 +40,7 @@ export class OfferFormComponent implements OnInit {
     private authService: AuthenticationService,
     private userService: UserService,
     private subjectService: SubjectService,
+    private toastr: ToastrService
   ) {
     this.offerForm = this.fb.group({});
     this.images = this.fb.array([]);
@@ -71,7 +73,6 @@ export class OfferFormComponent implements OnInit {
       date: [this.offer.date, Validators.required],
       subject_id: [this.offer.subject_id, Validators.required]
     });
-    console.log(this.isUpdatingOffer);
     this.offerForm.statusChanges.subscribe(() =>
       this.updateErrorMessages());
   }
@@ -83,6 +84,7 @@ export class OfferFormComponent implements OnInit {
         this.router.navigate(["../../offers", offer.id], {
           relativeTo: this.route
         });
+        this.toastr.success("Nachhilfeangebot erfolgreich bearbeitet.", "Bearbeitet");
       });
     } else {
       offer.user = this.user;
@@ -92,11 +94,11 @@ export class OfferFormComponent implements OnInit {
         this.offer = OfferFactory.empty();
         this.offerForm.reset(OfferFactory.empty());
         this.router.navigate(["../offers"], { relativeTo: this.route });
+        this.toastr.success("Nachhilfeangebot erfolgreich erstellt.", "Erstellt");
       });
     }
   }
   updateErrorMessages() {
-    console.log("Is invalid? " + this.offerForm.invalid);
     this.errors = {};
     for (const message of OfferFormErrorMessages) {
       const control = this.offerForm.get(message.forControl);
