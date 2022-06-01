@@ -22,6 +22,10 @@ export class OfferService {
     return this.http.get<Array<Offer>>(`${this.api}/offers/getBySubjectId/${id}`).pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
+  getbyUserId(id: string){
+    return this.http.get<Array<Offer>>(`${this.api}/offers/getByUserId/${id}`).pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
   getSingle(id: string): Observable<Offer> {
     return this.http.get<Offer>(`${this.api}/offers/${id}`).pipe(retry(3)).pipe(catchError(this.errorHandler));
   }

@@ -6,5 +6,6 @@
     <div *ngIf="!offers" class="ui active dimmer">
         <div class="ui large text loader">Nachhilfeangebote werden geladen...</div>
     </div>
-    <p *ngIf="offers && !offers.length">Es existieren im Moment noch keine Nachhilfeangebote!</p>
+    <br>
+    <p class="noOffersText" *ngIf="offers && !offers.length">Es existieren hierfür noch keine relevanten Nachhilfeangebote!</p>
 </div>
