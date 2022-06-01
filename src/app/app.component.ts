@@ -21,10 +21,10 @@ export class AppComponent {
 
   getNavTabs() {
     if (this.isTutor() && this.isLoggedIn())
-      return "five";
+      return "six";
     else if (this.isLoggedIn())
-      return "four";
-    return "three";
+      return "five";
+    return "four";
   }
 
   getLoginLabel() {

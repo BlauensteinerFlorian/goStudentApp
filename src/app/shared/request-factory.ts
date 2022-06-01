@@ -10,7 +10,7 @@ export class RequestFactory {
     static empty(): Request {
         const offer: Offer = OfferFactory.empty();
         const user: User = UserFactory.empty();
-        return new Request(0, offer, user, "pending", 0, 0);
+        return new Request(0, offer, user, "Ausstehend", 0, 0);
     }
 
     static fromObject(rawRequest: any): Request {

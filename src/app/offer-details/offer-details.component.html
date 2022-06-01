@@ -43,9 +43,9 @@
             button" [routerLink]="['../../admin', offer?.id]">
                 <i class="write icon"></i> Nachhilfeangebot bearbeiten
             </a>
-            <button *ngIf="authService.isLoggedIn()&&!authService.isTutor()" class="ui tiny green labeled icon
+            <button *ngIf="authService.isLoggedIn()&&!authService.isTutor()" [disabled]="alreadyCreatedARequest()" class="ui tiny green labeled icon
             button" (click)="createRequest()">
-                <i class="check icon"></i> Angebot annehmen
+               <i class="check icon"></i> {{getRequestButtonLabel()}}
             </button>
             <button *ngIf="authService.isLoggedIn()&&!authService.isTutor()" class="ui tiny blue labeled icon
             button" (click)="sendMessage()">
@@ -53,4 +53,9 @@
             </button>
         </div>
     </div>
+</div>
+<div class="ui divider"></div>
+<div *ngIf="authService.isLoggedIn()&&authService.isTutor()&&isOfferOwner()">
+    <h2 class="ui center aligned header">Anfragen für dieses Angebot:</h2>
+    <gs-request-list [offer]="offer"></gs-request-list>
 </div>

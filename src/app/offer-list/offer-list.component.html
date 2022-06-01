@@ -1,6 +1,6 @@
 <div class="ui cards">
     <div class="item_div" *ngFor="let offer of offers">
-        <a class="item gs-offer-list-item" [offer]="offer" [routerLink]="offer.id.toString()"></a>
+        <a class="item gs-offer-list-item" [offer]="offer" [routerLink]="[offer.id.toString()]"></a>
     </div>
 
     <div *ngIf="!offers" class="ui active dimmer">

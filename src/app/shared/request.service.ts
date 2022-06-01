@@ -20,8 +20,17 @@ export class RequestService {
     return this.http.get<Request>(`${this.api}/requests/${id}`).pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
-  getByUserIdAndOfferId(params: Object): Observable<Request> {
-    return this.http.get<Request>(`${this.api}/requests/getByUserIdAndOfferId`, params)
+  getPendingRequestsByOfferId(id: string): Observable<Array<Request>> {
+    return this.http.get<Request>(`${this.api}/getPendingRequestsByOfferId/${id}`).pipe(retry(3)).pipe(catchError(this.errorHandler))
+  }
+
+  getByUserIdAndOfferId(params: Request): Observable<Request> {
+    console.log(params);
+    return this.http.post<Request>(`${this.api}/getRequestsByUserIdAndOfferId`, params).pipe(retry(3)).pipe(catchError(this.errorHandler))
+  }
+
+  getByUserId(id: string): Observable<Array<Request>> {
+    return this.http.get<Request>(`${this.api}/getByUserId/${id}`).pipe(retry(3)).pipe(catchError(this.errorHandler))
   }
 
   create(request: Request): Observable<any> {
@@ -31,6 +40,11 @@ export class RequestService {
 
   update(request: Request): Observable<any> {
     return this.http.put(`${this.api}/requests/${request.id}`, request)
+      .pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
+  acceptRequest(request: Request): Observable<any> {
+    return this.http.put(`${this.api}/acceptRequest/${request.id}`, request)
       .pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 

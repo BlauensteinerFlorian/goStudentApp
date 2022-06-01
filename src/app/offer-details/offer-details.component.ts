@@ -26,10 +26,14 @@ export class OfferDetailsComponent implements OnInit {
     this.os.getSingle(offerId).subscribe(offer => {
       this.offer = offer;
       console.log(offer);
-      this.requestService.getByUserIdAndOfferId({user_id: this.authService.getCurrentUserId().toString(), offer_id: offerId}).subscribe(req => {
-        this.request = this.request;
-        console.log(this.request);
-      });
+      if(this.authService.isLoggedIn() && !this.authService.isTutor()){
+        this.request = RequestFactory.empty();
+        this.request.offer_id = offerId;
+        this.request.user_id = this.authService.getCurrentUserId();
+        this.requestService.getByUserIdAndOfferId(this.request).subscribe(req => {
+          this.request = req;
+        });
+      }
     });
 
   }
@@ -45,11 +49,12 @@ export class OfferDetailsComponent implements OnInit {
   }
 
   createRequest() {
-    const req: Request = RequestFactory.fromObject({offer_id: this.offer?.id ,user_id: this.authService.getCurrentUserId(), state: "pending"});
+    const req: Request = RequestFactory.fromObject({offer_id: this.offer?.id ,user_id: this.authService.getCurrentUserId(), state: "Ausstehend"});
     console.log(req);
 
     this.requestService.create(req).subscribe(res => {
       console.log(res);
+      this.router.navigate(['../../profile'], { relativeTo: this.route })
     });
   }
 
@@ -61,8 +66,11 @@ export class OfferDetailsComponent implements OnInit {
 
   alreadyCreatedARequest()
   {
-    const userid = this.authService.getCurrentUserId();
+    return this.request?.user_id;
+  }
 
+  getRequestButtonLabel(){
+    return this.alreadyCreatedARequest() ? "Anfrage bereits gesendet" : "Anfrage senden";
   }
 
   sendMessage(){

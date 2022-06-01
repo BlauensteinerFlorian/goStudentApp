@@ -1,7 +1,7 @@
 <div class="ui grid" *ngIf="user">
     <div class="sixteen wide column">
         <div class="ten wide column">
-            <h1 class="ui center aligned header">{{ user.firstname }} {{user.lastname}} <i class="book icon"></i></h1>
+            <h1 class="ui center aligned header">{{ user.firstname }} {{user.lastname}} <i class="user icon"></i></h1>
             <h3 class="ui center aligned header">{{ user.biography }}</h3>
             <br>
             <h4 class="ui center aligned header">Kontaktdaten:</h4>
@@ -20,3 +20,6 @@
 <div class="ui divider"></div>
 <h3 class="ui center aligned header">Meine Nachhilfeangebote: </h3>
 <gs-offer-list></gs-offer-list>
+<div class="ui divider" *ngIf="isStudent()"></div>
+<h3 class="ui center aligned header" *ngIf="isStudent()">Meine Anfragen: </h3>
+<gs-request-list *ngIf="isStudent()"></gs-request-list>

@@ -26,10 +26,19 @@ export class OfferListComponent implements OnInit {
     }
     else if (routePath == "profile") {
       const currentuserId = this.authService.getCurrentUserId();
-      this.offerService.getbyUserId(currentuserId.toString()).subscribe(res => {
-        this.offers = res
-        console.log(res);
-      });
+      if(this.authService.getCurrentUserRole() == 2){
+        this.offerService.getbyUserId(currentuserId.toString()).subscribe(res => {
+          this.offers = res
+          console.log(res);
+        });
+      }
+      else{
+        this.offerService.getbyStudentId(currentuserId.toString()).subscribe(res => {
+          this.offers = res
+          console.log(this.authService.getCurrentUserRole())
+          console.log(res);
+        });
+      }
     }
     else {
       this.offerService.getAll().subscribe(res => {

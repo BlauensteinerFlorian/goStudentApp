@@ -23,4 +23,8 @@ export class ProfileComponent implements OnInit {
       console.log(user);
     });
   }
+
+  isStudent(){
+    return this.authService.getCurrentUserRole() == 1;
+  }
 }

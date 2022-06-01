@@ -1,0 +1,14 @@
+<div class="ui cards">
+    <div class="item_div" *ngFor="let request of requests">
+        <div class="item">
+            <gs-request-list-item [request]="request"></gs-request-list-item>
+        </div>
+
+    </div>
+
+    <div *ngIf="!requests" class="ui active dimmer">
+        <div class="ui large text loader">Nachhilfeangebote werden geladen...</div>
+    </div>
+    <br>
+    <p class="noOffersText" *ngIf="requests && !requests.length">Es existieren hierfür noch Anfragen!</p>
+</div>

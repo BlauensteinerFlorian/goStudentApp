@@ -9,7 +9,7 @@ export class OfferFactory {
         }, { id: 0, title: '', description: '' }, 'offen', '', {
             id: 0, firstname: '', lastname: '',
             biography: '', phone: '', email: '', password: '', role: 0
-        }, 0, 0);
+        }, 0, 0, 0);
     }
 
     static fromObject(rawOffer: any): Offer {
@@ -26,7 +26,8 @@ export class OfferFactory {
             rawOffer.description,
             rawOffer.student_id,
             rawOffer.user_id,
-            rawOffer.subject_id
+            rawOffer.subject_id,
+            rawOffer.student_id
         );
     }
 

@@ -1,5 +1,6 @@
 <div class="ui {{getNavTabs()}} item tabs menu">
   <a routerLink="home" routerLinkActive="active" class="item">Home</a>
+  <a routerLink="subjects" routerLinkActive="active" class="item">Fächer</a>
   <a routerLink="offers" routerLinkActive="active" class="item">Nachhilfeangebote</a>
   <a *ngIf="isLoggedIn()&&isTutor()" routerLink="admin" routerLinkActive="active" class="item">Angebot erstellen</a>
   <a *ngIf="isLoggedIn()" routerLink="profile" routerLinkActive="active" class="item">Profil</a>

@@ -1,0 +1,30 @@
+<div class="ui card">
+    <div class="content">
+        <div class="header">Anfrage von: {{ request?.user?.firstname }} {{request?.user?.lastname}} <i class="clipboard icon"></i></div>
+    </div>
+    <div class="content">
+        <h4 class="ui sub header">Status: {{request?.state}}</h4>
+        <div class="ui small feed">
+            <div class="event">
+                <div class="content">
+                    <div class="summary">
+                        Für das Angebot: {{request?.offer?.title}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="description">
+            Kontaktdaten: <br>
+            <span>Email: <a href="mailto:{{request?.user?.email}}">{{request?.user?.email}}</a></span><br>
+            <span *ngIf="request?.user?.phone">Telefon: <a href="tel:{{request?.user?.phone}}">{{request?.user?.phone}}</a></span>
+        </div>
+    </div>
+        <button *ngIf="isOfferOwner&&isTutor()" class="ui tiny green labeled icon
+        button" (click)="acceptRequest()">
+           <i class="check icon"></i> Anfrage annehmen
+        </button>
+        <button *ngIf="isOfferOwner&&isTutor()" class="ui tiny red labeled icon
+        button" (click)="declineRequest()">
+            <i class="paper plane icon"></i> Anfrage ablehnen
+        </button>
+</div>

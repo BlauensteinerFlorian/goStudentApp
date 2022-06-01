@@ -28,7 +28,7 @@ export class AuthenticationService {
     return Number.parseInt(<string>sessionStorage.getItem("userId"));
   }
   public getCurrentUserRole() {
-    return Number.parseInt(<string>sessionStorage.getItem("role"));
+    return Number.parseInt(<string>sessionStorage.getItem("user_role"));
   }
 
   public setSessionStorage(token: string) {
