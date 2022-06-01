@@ -7,6 +7,30 @@
             <div class="ui divider"></div>
         </div>
     </div>
+    <div *ngIf="user&&authService.isLoggedIn()&&authService.isTutor()&&isOfferOwner()" class="sixteen wide column">
+        <div class="ui card contactCard">
+            <div class="content">
+                <div class="header">Gebucht von: {{user.firstname}} {{user.lastname}} <i class="user icon"></i></div>
+            </div>
+            <div class="content">
+                <div class="ui small feed">
+                    <div class="event">
+                        <div class="content">
+                            <div class="summary">
+                                Kontaktdaten: <br>
+                                <span align="center"><i class="mail icon"></i>Mail: <a href="mailto:{{user.email}}">{{user.email}}</a><br><i class="phone icon"></i>Tel.: <a href="tel:{{user.phone}}"
+                                    *ngIf="user.phone">{{user.phone}}</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="user.biography" class="description">
+                    {{user?.biography}}
+                </div>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+    </div>
     <div class="sixteen wide column">
         <div class="ui grid">
             <div class="two wide column"></div>
@@ -54,8 +78,19 @@
         </div>
     </div>
 </div>
-<div class="ui divider"></div>
+<div class="ui divider" *ngIf="authService.isLoggedIn()&&authService.isTutor()&&isOfferOwner()"></div>
 <div *ngIf="authService.isLoggedIn()&&authService.isTutor()&&isOfferOwner()">
     <h2 class="ui center aligned header">Anfragen für dieses Angebot:</h2>
     <gs-request-list [offer]="offer"></gs-request-list>
 </div>
+<div *ngIf="authService.isLoggedIn()&&!authService.isTutor()" class="ui divider"></div>
+<div *ngIf="authService.isLoggedIn()&&!authService.isTutor()&&offer">
+    <h2 class="ui center aligned header">Termin passt nicht? Nachricht an den Anbieter senden:</h2>
+    <gs-message-form [offer]="offer"></gs-message-form>
+</div>
+<div *ngIf="authService.isLoggedIn()&&authService.isTutor()&&isOfferOwner()" class="ui divider"></div>
+<div *ngIf="authService.isLoggedIn()&&authService.isTutor()&&isOfferOwner()">
+    <h2 class="ui center aligned header">Nachrichten zu diesem Angebot</h2>
+    <gs-message-list [offer]="offer"></gs-message-list>
+</div>
+<div class="ui divider"></div>

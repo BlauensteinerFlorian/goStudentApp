@@ -41,7 +41,7 @@ export class OfferListComponent implements OnInit {
       }
     }
     else {
-      this.offerService.getAll().subscribe(res => {
+      this.offerService.getAllOpen().subscribe(res => {
         this.offers = res
         console.log(res);
       });

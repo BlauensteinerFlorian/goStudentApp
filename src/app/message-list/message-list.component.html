@@ -1,0 +1,6 @@
+<div class="ui comments">
+    <h3 class="ui dividing header">Nachrichten</h3>
+    <div class="comment" *ngFor="let message of messages">
+        <gs-message-list-item [message]="message"></gs-message-list-item>
+    </div>
+</div>

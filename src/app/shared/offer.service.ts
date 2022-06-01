@@ -22,6 +22,10 @@ export class OfferService {
     return this.http.get<Array<Offer>>(`${this.api}/offers/getBySubjectId/${id}`).pipe(retry(3)).pipe(catchError(this.errorHandler));
   }
 
+  getAllOpen(){
+    return this.http.get<Array<Offer>>(`${this.api}/offers/getAllOpen`).pipe(retry(3)).pipe(catchError(this.errorHandler));
+  }
+
   getbyUserId(id: string){
     return this.http.get<Array<Offer>>(`${this.api}/offers/getByUserId/${id}`).pipe(retry(3)).pipe(catchError(this.errorHandler));
   }

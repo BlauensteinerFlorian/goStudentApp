@@ -1,0 +1,9 @@
+<div class="content">
+    <a class="author">{{ message?.user?.firstname }} {{message?.user?.lastname}}</a>
+    <div class="metadata">
+      <span *ngIf="message?.offer?.title" class="offer">Nachricht zum Angebot: "<b>{{message?.offer?.title}}</b>"</span>
+    </div>
+    <div class="text">
+        {{ message?.text }}
+    </div>
+  </div>

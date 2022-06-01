@@ -30,6 +30,7 @@ export class OfferFormComponent implements OnInit {
   errors: { [key: string]: string } = {};
   isUpdatingOffer = false;
   images: FormArray;
+  count: number = 0;
   constructor(
     private fb: FormBuilder,
     private os: OfferService,
@@ -59,6 +60,7 @@ export class OfferFormComponent implements OnInit {
     this.initOffer();
   }
   initOffer() {
+    this.count++;
     this.offerForm = this.fb.group({
       id: this.offer.id,
       title: [this.offer.title, Validators.required],
@@ -70,9 +72,6 @@ export class OfferFormComponent implements OnInit {
       subject_id: [this.offer.subject_id, Validators.required]
     });
     console.log(this.isUpdatingOffer);
-    if (!this.isUpdatingOffer) {
-      this.offerForm.controls['state'].disable();
-    }
     this.offerForm.statusChanges.subscribe(() =>
       this.updateErrorMessages());
   }
@@ -81,7 +80,6 @@ export class OfferFormComponent implements OnInit {
 
     offer.date = this.formatDate(offer.date);
     if (this.isUpdatingOffer) {
-
       this.os.update(offer).subscribe(res => {
         this.router.navigate(["../../offers", offer.id], {
           relativeTo: this.route

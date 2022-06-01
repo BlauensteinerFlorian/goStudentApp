@@ -23,6 +23,9 @@ import { SubjectDetailsComponent } from './subject-details/subject-details.compo
 import { ProfileComponent } from './profile/profile.component';
 import { RequestListComponent } from './request-list/request-list.component';
 import { RequestListItemComponent } from './request-list-item/request-list-item.component';
+import { MessageFormComponent } from './message-form/message-form.component';
+import { MessageListComponent } from './message-list/message-list.component';
+import { MessageListItemComponent } from './message-list-item/message-list-item.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { RequestListItemComponent } from './request-list-item/request-list-item.
     SubjectDetailsComponent,
     ProfileComponent,
     RequestListComponent,
-    RequestListItemComponent
+    RequestListItemComponent,
+    MessageFormComponent,
+    MessageListComponent,
+    MessageListItemComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, ToastrModule.forRoot(), ReactiveFormsModule

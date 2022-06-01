@@ -6,6 +6,8 @@ import { AuthenticationService } from '../shared/authentication.service';
 import { Request } from '../shared/request';
 import { RequestFactory } from '../shared/request-factory';
 import { RequestService } from '../shared/request.service';
+import { UserService } from '../shared/user.service';
+import { User } from '../shared/user';
 
 @Component({
   selector: 'gs-offer-details',
@@ -16,9 +18,10 @@ import { RequestService } from '../shared/request.service';
 export class OfferDetailsComponent implements OnInit {
   offer: Offer | undefined;
   request: Request | undefined;
+  user: User | undefined;
 
   constructor(private os: OfferService, private route: ActivatedRoute, private router: Router,
-    public authService: AuthenticationService, private requestService: RequestService) { }
+    public authService: AuthenticationService, private requestService: RequestService, private userService: UserService) { }
 
   ngOnInit(): void {
     const offerId = this.route.snapshot.params['id'];
@@ -32,6 +35,12 @@ export class OfferDetailsComponent implements OnInit {
         this.request.user_id = this.authService.getCurrentUserId();
         this.requestService.getByUserIdAndOfferId(this.request).subscribe(req => {
           this.request = req;
+        });
+      }
+      if(this.offer.student_id)
+      {
+        this.userService.getSingle(this.offer.student_id.toString()).subscribe(user => {
+          this.user = user;
         });
       }
     });

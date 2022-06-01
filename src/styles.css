@@ -2,6 +2,10 @@
     margin-top: 2em;
 }
 
+.menu{
+    margin-bottom: 2em !important;
+}
+
 .ui.cards {
     justify-content: space-around;
 }
@@ -23,7 +27,19 @@
 {
     margin-top: 2em;
 }
+.ui.divider
+{
+    margin-top: 2em !important;
+    margin-bottom: 2em !important;
+}
+.ui.cards{
+    margin-bottom: 2em !important;
+}
 
+.contactCard
+{
+    margin-left: 40% !important;
+}
 
 @media screen and (min-width: 730px) {
     .root {

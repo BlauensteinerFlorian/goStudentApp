@@ -23,3 +23,8 @@
 <div class="ui divider" *ngIf="isStudent()"></div>
 <h3 class="ui center aligned header" *ngIf="isStudent()">Meine Anfragen: </h3>
 <gs-request-list *ngIf="isStudent()"></gs-request-list>
+<div *ngIf="authService.isLoggedIn()&&authService.isTutor()" class="ui divider"></div>
+<div *ngIf="authService.isLoggedIn()&&authService.isTutor()">
+    <h2 class="ui center aligned header">Alle Nachrichten</h2>
+    <gs-message-list></gs-message-list>
+</div>

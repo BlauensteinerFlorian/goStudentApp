@@ -1,0 +1,13 @@
+<div class="ui grid">
+    <div class="two wide column"></div>
+    <div class="twelve wide column">
+        <form class="ui large form" [formGroup]="messageForm" (ngSubmit)="submitForm()">
+            <input type="hidden" formControlName="id">
+            <div class="field">
+                <label>Nachricht</label>
+                <textarea formControlName="text" rows="3"></textarea>
+            </div>
+            <button type="submit" class="ui button" [disabled]="messageForm.invalid">Speichern</button>
+        </form>
+    </div>
+</div>

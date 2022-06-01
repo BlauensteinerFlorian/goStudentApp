@@ -12,11 +12,12 @@
             </div>
             <div class="field">
                 <label>Status</label>
-                <select formControlName="state" class="input">
+                <select  formControlName="state" class="input">
                     <option disabled selected value="-1">Bitte wählen ...</option>
                     <option value="offen">Offen</option>
-                    <option value="Nicht erschienen">Nicht erschienen</option>
-                    <option value="Abgeschlossen">Abgeschlossen</option>
+                    <option [disabled]="!isUpdatingOffer" value="Angebot vergeben">Angebot vergeben</option>
+                    <option [disabled]="!isUpdatingOffer" value="Nicht erschienen">Nicht erschienen</option>
+                    <option [disabled]="!isUpdatingOffer" value="Abgeschlossen">Abgeschlossen</option>
                 </select>
             </div>
             <div class="field">
