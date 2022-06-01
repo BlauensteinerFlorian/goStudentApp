@@ -63,10 +63,10 @@ export class OfferFormComponent implements OnInit {
     this.count++;
     this.offerForm = this.fb.group({
       id: this.offer.id,
-      title: [this.offer.title, Validators.required],
+      title: [this.offer.title, [Validators.required, Validators.minLength(4), Validators.maxLength(200)]],
       state: [this.offer.state, Validators.required],
-      start_time: [this.offer.start_time, Validators.required],
-      end_time: [this.offer.end_time, Validators.required],
+      start_time: [this.offer.start_time, [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
+      end_time: [this.offer.end_time, [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
       description: this.offer.description,
       date: [this.offer.date, Validators.required],
       subject_id: [this.offer.subject_id, Validators.required]
@@ -77,7 +77,6 @@ export class OfferFormComponent implements OnInit {
   }
   submitForm() {
     const offer: Offer = OfferFactory.fromObject(this.offerForm.value);
-
     offer.date = this.formatDate(offer.date);
     if (this.isUpdatingOffer) {
       this.os.update(offer).subscribe(res => {

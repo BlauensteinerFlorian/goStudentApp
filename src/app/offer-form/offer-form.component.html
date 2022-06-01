@@ -7,8 +7,7 @@
             <div class="field">
                 <label>Titel</label>
                 <input formControlName="title">
-                <div *ngIf="errors['title']" class="ui negative message"> {{
-                    errors['title'] }} </div>
+                <div *ngIf="errors['title']" class="ui negative message"> {{errors['title'] }}</div>
             </div>
             <div class="field">
                 <label>Status</label>
@@ -21,12 +20,14 @@
                 </select>
             </div>
             <div class="field">
-                <label>Startzeit</label>
+                <label>Startzeit (Im Format HH:MM z.B. 16:30)</label>
                 <input formControlName="start_time">
+                <div *ngIf="errors['start_time']" class="ui negative message"> {{errors['start_time'] }}</div>
             </div>
             <div class="field">
-                <label>Endzeit</label>
+                <label>Endzeit (Im Format HH:MM z.B. 17:30)</label>
                 <input formControlName="end_time">
+                <div *ngIf="errors['end_time']" class="ui negative message"> {{errors['end_time'] }}</div>
             </div>
             <div class="field">
                 <label>Tag</label>
