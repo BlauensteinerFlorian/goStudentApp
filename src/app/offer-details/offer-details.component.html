@@ -71,10 +71,6 @@
             button" (click)="createRequest()">
                <i class="check icon"></i> {{getRequestButtonLabel()}}
             </button>
-            <button *ngIf="authService.isLoggedIn()&&!authService.isTutor()" class="ui tiny blue labeled icon
-            button" (click)="sendMessage()">
-                <i class="paper plane icon"></i> Nachricht senden
-            </button>
         </div>
     </div>
 </div>
